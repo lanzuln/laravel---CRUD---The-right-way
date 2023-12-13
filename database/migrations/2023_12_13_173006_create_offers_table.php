@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\Role;
 use App\Constants\Status;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->string('status')->default(Status::DRAFT);
+            $table->string('role')->default(Role::USER);
             $table->foreignId('author_id')->constrained('users');
             $table->softDeletes();
 
