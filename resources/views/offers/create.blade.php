@@ -60,19 +60,20 @@
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label">Category</label>
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Select Category</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected disabled>Select Category</option>
+                                    @foreach ($category as $item)
+                                    <option value="{{$item->id}}">{{$item->title}}</option>
+                                    @endforeach
+
                                 </select>
                             </div>
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label">Location</label>
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Select Location</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected disabled>Select Location</option>
+                                    @foreach ($location as $item)
+                                    <option value="{{$item->id}}">{{$item->title}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
