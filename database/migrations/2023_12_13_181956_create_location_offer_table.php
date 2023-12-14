@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('location_offer', function (Blueprint $table) {
             $table->foreignId('location_id')->constrained('locations');
-            $table->foreignId('offers_id')->constrained('offers');
+            $table->foreignId('offer_id')->constrained('offers');
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
          Schema::table('location_offer', function (Blueprint $table) {
             $table->dropForeign(['location_id']);
-            $table->dropForeign(['offers_id']);
+            $table->dropForeign(['offer_id']);
             $table->dropIfExists();
         });
     }

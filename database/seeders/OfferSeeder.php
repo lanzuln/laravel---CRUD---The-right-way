@@ -2,16 +2,26 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\Offer;
 use Illuminate\Database\Seeder;
 
-class OfferSeeder extends Seeder
-{
+class OfferSeeder extends Seeder {
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
-        //
+    public function run(): void {
+        $offers = Offer::factory(5)->create();
+
+        foreach ($offers as $offer) {
+            $categories = Category::inRandomOrder()->limit(5)->get();
+            $offer->categories()->sync($categories->pluck('id'));
+        }
+
+        foreach ($offers as $offer) {
+            $locations = Location::inRandomOrder()->limit(5)->get();
+            $offer->locations()->sync($locations->pluck('id'));
+        }
     }
 }
