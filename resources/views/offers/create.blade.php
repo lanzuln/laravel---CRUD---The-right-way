@@ -48,47 +48,66 @@
                 <div class="col-md-6 mx-auto">
                     <div class="card">
                         <h3 class="text-center pb-4">Create offer</h3>
-                        <form class="row g-3">
+                        <form class="row g-3" action="{{route('offers.store')}}" method="post">
+                            @csrf
                             <div class="col-md-12">
                                 <label for="inputEmail4" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="inputEmail4">
+                                <input type="text" name="title" class="form-control" id="inputEmail4">
+                                @error('title')
+                                <p class="error_message">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-md-12">
                                 <label for="inputEmail4" class="form-label">Price</label>
-                                <input type="number" class="form-control" id="inputEmail4">
+                                <input type="number" name="price" class="form-control" id="inputEmail4">
+                                @error('price')
+                                <p class="error_message">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label">Category</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="category_id" aria-label="Default select example">
                                     <option selected disabled>Select Category</option>
                                     @foreach ($category as $item)
                                     <option value="{{$item->id}}">{{$item->title}}</option>
                                     @endforeach
 
                                 </select>
+                                @error('category_id')
+                                <p class="error_message">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label">Location</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="location_id" aria-label="Default select example">
                                     <option selected disabled>Select Location</option>
                                     @foreach ($location as $item)
                                     <option value="{{$item->id}}">{{$item->title}}</option>
                                     @endforeach
                                 </select>
+                                @error('location_id')
+                                <p class="error_message">{{$message}}</p>
+                                @enderror
                             </div>
 
                             <div class="col-md-12">
                                 <label for="formFileSm" class="form-label">Image</label>
-                                <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                <input class="form-control form-control-sm" name="image" id="formFileSm" type="file">
+                                @error('image')
+                                <p class="error_message">{{$message}}</p>
+                                @enderror
                             </div>
 
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label">Description</label>
-                                <textarea class="form-control" name="" id="" cols="20" rows="5"></textarea>
+                                <textarea class="form-control" name="description" id="" cols="20" rows="5"></textarea>
+                                @error('description')
+                                <p class="error_message">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="row pt-4">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-outline-danger w-100"><i
+                                    <button  class="btn btn-outline-danger w-100"><i
                                         class="fa-solid fa-xmark"></i></button>
                                 </div>
                                 <div class="col-6">
